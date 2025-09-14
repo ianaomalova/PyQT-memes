@@ -1,4 +1,6 @@
 import sys
+
+from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QStackedWidget
 
 from navbar import NavBar
@@ -24,6 +26,8 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    font = QFont("Arial", 12)  # (название шрифта, размер)
+    app.setFont(font)
     window = MainWindow()
     window.setFixedSize(800, 600)
     window.show()
