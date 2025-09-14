@@ -18,7 +18,7 @@ class ReloadHandler(FileSystemEventHandler):
 
     def on_modified(self, event):
         if event.src_path.endswith(".py"):
-            print("🔄 Перезапуск...")
+            print("Перезапуск...")
             self.start_process()
 
 if __name__ == "__main__":
