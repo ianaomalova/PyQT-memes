@@ -15,7 +15,6 @@ navbar_icon = """
         margin: 10px 0;
         min-height: 50px;
         min-width: 50px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         text-align: center;
         qproperty-alignment: AlignCenter;
     }
@@ -24,7 +23,6 @@ navbar_icon = """
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
             stop:0 rgba(255, 255, 255, 0.2), stop:1 rgba(26, 188, 156, 0.2));
         border: 2px solid rgba(26, 188, 156, 0.5);
-        transform: scale(1.05);
     }
 """
 
@@ -40,7 +38,6 @@ navbar_text = """
         border-radius: 12px;
         padding: 12px 8px;
         margin: 5px 0;
-        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         letter-spacing: 0.5px;
         line-height: 1.4;
         text-align: center;
@@ -74,14 +71,12 @@ load_buttons = """
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
                     stop:0 rgba(255, 193, 7, 1.0), stop:1 rgba(255, 152, 0, 1.0));
                 border: 2px solid #e0a800;
-                transform: translateY(-1px);
             }
 
             QPushButton:pressed {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
                     stop:0 rgba(255, 152, 0, 0.9), stop:1 rgba(230, 126, 34, 0.9));
                 border: 2px solid #d68910;
-                transform: translateY(1px);
             }
 
             QPushButton:disabled {
