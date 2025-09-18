@@ -26,7 +26,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    font = QFont("Arial", 12)  # (название шрифта, размер)
+    font = QFont("Arial", 12)
     app.setFont(font)
     window = MainWindow()
     window.setFixedSize(800, 600)
