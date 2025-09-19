@@ -21,7 +21,9 @@ class ImageLoader(QThread):
 class PageOne(QWidget):
     def __init__(self):
         super().__init__()
-        self.layout = QVBoxLayout()
+
+        layout = QVBoxLayout(self)
+        
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
@@ -29,16 +31,12 @@ class PageOne(QWidget):
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
-        # Добавляем в лейаут
-        self.layout.addWidget(self.input)
-        self.layout.addWidget(self.button)
-        self.layout.addWidget(self.image_label)
+        layout.addWidget(self.input)
+        layout.addWidget(self.button)
+        layout.addWidget(self.image_label)
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
-        self.setLayout(self.layout)
-
-        # Сигналы
         self.button.clicked.connect(self.load_image)
 
     def load_image(self):
