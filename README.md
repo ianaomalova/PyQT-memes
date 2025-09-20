@@ -1,6 +1,6 @@
 ## 🐱 PyQt Image Loader
 
 
-###Changelog:
+###   Changelog:
 
 1. Добавлено нажатие кнопки по Enter
