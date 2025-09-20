@@ -17,10 +17,18 @@ class NavBar(QWidget):
 
         icon = QLabel('🐱')
         icon.setStyleSheet(styles.navbar_icon)
+        icon.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         text = QLabel("Мемные статусы")
         text.setStyleSheet(styles.navbar_text)
-        layout.addWidget(icon)
-        layout.addWidget(text)
+        text.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # 👇Менял стили, сначала всё сломалось, потом починил как-то вот так
+        fixed_width = 120
+        icon.setFixedWidth(fixed_width)
+        text.setFixedWidth(fixed_width)
+        layout.addWidget(icon, alignment=Qt.AlignmentFlag.AlignHCenter)
+        layout.addWidget(text, alignment=Qt.AlignmentFlag.AlignHCenter)
 
         layout.addStretch()
 
