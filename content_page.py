@@ -38,6 +38,7 @@ class PageOne(QWidget):
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+        self.input.returnPressed.connect(self.load_image) #я фанат того, чтобы кнопки полей тыкались по Enter
 
     def load_image(self):
         text = self.input.text().strip()
