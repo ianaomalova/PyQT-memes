@@ -1,6 +1,6 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
+    background:  #59cf74;
     border-right: 2px solid #1abc9c;
 }"""
 
@@ -33,7 +33,7 @@ navbar_text = """
         font-weight: 600;
         font-family: 'Segoe UI', Arial, sans-serif;
         background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-            stop:0 rgba(255, 255, 255, 0.8), stop:1 rgba(255, 255, 255, 0.4));
+            stop:0 rgba(255, 255, 255, 0.8), stop:1 rgba(170, 255, 189, 0.9));
         border: 1px solid rgba(26, 188, 156, 0.2);
         border-radius: 12px;
         padding: 12px 8px;
@@ -55,7 +55,7 @@ navbar_text = """
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
+                    stop:0 rgba(0, 180, 255, 0.8), stop:1 rgba(27, 59, 222, 0.8));
                 color: white;
                 border: 2px solid #ffc107;
                 border-radius: 10px;
@@ -69,13 +69,13 @@ load_buttons = """
 
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 1.0), stop:1 rgba(255, 152, 0, 1.0));
+                    stop:0 rgba(0, 180, 255, 1.0), stop:1 rgba(27, 59, 222, 1.0));
                 border: 2px solid #e0a800;
             }
 
             QPushButton:pressed {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 152, 0, 0.9), stop:1 rgba(230, 126, 34, 0.9));
+                    stop:0 rgba(45, 140, 181, 0.9), stop:1 rgba(45, 140, 181, 0.9));
                 border: 2px solid #d68910;
             }
 
