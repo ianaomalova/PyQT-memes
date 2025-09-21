@@ -33,11 +33,13 @@ class ImageLoader(QThread):
         self.text = text
 
     finished = pyqtSignal(bytes)
-
+    error = pyqtSignal(str)
     def run(self):
         response = requests.get(api.CAT_URL + self.text)
         if response.status_code == 200:
             self.finished.emit(response.content)
+        else: self.error.emit(f"Ошибка сервера: {response.status_code}")
+
 
 class PageOne(QWidget):
     def __init__(self):
@@ -75,10 +77,18 @@ class PageOne(QWidget):
 
     def load_image(self):
         text = self.input.text().strip()
+        if not text.isdigit():
+            self.show_error("Чего вводишь? Код ошибки состоит из циферок O.O") #тут текст ошибок пишу
+            return
+        code = int(text)
+        if code not in api.SUPPORTED_CODES:
+            self.show_error(f"Кода ошибки {code} нет 😑") #такой кода ошибки не найден
+            return
         self.button.setEnabled(False)
         self.button.setText("Загружаю...")
         self.thread = ImageLoader(text)
         self.thread.finished.connect(self.display_image)
+        self.thread.error.connect(self.handle_error)
         self.thread.start()
 
     def display_image(self, data: bytes):
@@ -88,3 +98,15 @@ class PageOne(QWidget):
         self.button.setEnabled(True)
         self.has_image = True  # Ставлю флаг, что картинка есть
         self.button.setText("Загрузить картинку")
+    #сделаем обработчик ошибок, чтобы от ввода числа по типу 2000 ничего не ломалось
+    def handle_error(self, error_message: str):
+            self.button.setEnabled(True)
+            self.button.setText("Загрузить картинку")
+            self.show_error(error_message)
+
+    def show_error(self, message: str):
+
+        self.image_label.setText(message)
+        self.has_image = False
+        self.clear_button.setVisible(False)
+        self.image_label.update()

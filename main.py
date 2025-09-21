@@ -23,7 +23,7 @@ class MainWindow(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    font = QFont("Arial", 12)
+    font = QFont("Segoe UI", 12)
     app.setFont(font)
     window = MainWindow()
     window.setFixedSize(800, 600)
