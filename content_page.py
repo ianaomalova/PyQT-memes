@@ -4,14 +4,17 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
 import requests
 import api
 import styles
-#Класс для кнопки. Захотел кнопочку, которая сама появляется в углу картинки, если подвести мышку
+
+
+# Класс для кнопки. Захотел кнопочку, которая сама появляется в углу картинки, если подвести мышку
 class HoverLabel(QLabel):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setMouseTracking(True)
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.setStyleSheet("border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;")
-# собственно здесь это и реализую через считывание позиции мыши
+
+    # собственно здесь это и реализую через считывание позиции мыши
     def mouseMoveEvent(self, event):
         mouse_pos = event.position().toPoint()
         button_zone = QRect(self.width() - 60, 0, 60, 60)
@@ -20,25 +23,29 @@ class HoverLabel(QLabel):
         if parent and hasattr(parent, 'clear_button'):
             has_image = getattr(parent, 'has_image', False)
 
-            if button_zone.contains(mouse_pos) and has_image: #has_image - чтобы кнопки не было, когда картинки нет
+            # has_image - чтобы кнопки не было, когда картинки нет
+            if button_zone.contains(mouse_pos) and has_image:
                 parent.clear_button.setVisible(True)
             else:
                 parent.clear_button.setVisible(False)
 
         super().mouseMoveEvent(event)
 
+
 class ImageLoader(QThread):
+    finished = pyqtSignal(bytes)
+    error = pyqtSignal(str)
+
     def __init__(self, text: str):
         super().__init__()
         self.text = text
 
-    finished = pyqtSignal(bytes)
-    error = pyqtSignal(str)
     def run(self):
         response = requests.get(api.CAT_URL + self.text)
         if response.status_code == 200:
             self.finished.emit(response.content)
-        else: self.error.emit(f"Ошибка сервера: {response.status_code}")
+        else:
+            self.error.emit(f"Ошибка сервера: {response.status_code}")
 
 
 class PageOne(QWidget):
@@ -51,7 +58,7 @@ class PageOne(QWidget):
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
-        self.image_label = HoverLabel(self) #тут тоже поменял на свой label
+        self.image_label = HoverLabel(self)  # тут тоже поменял на свой label
         self.image_label.setScaledContents(True)
 
         layout.addWidget(self.input)
@@ -61,28 +68,29 @@ class PageOne(QWidget):
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
-        self.input.returnPressed.connect(self.load_image) #я фанат того, чтобы кнопки полей тыкались по Enter
+        self.input.returnPressed.connect(self.load_image)  # я фанат того, чтобы кнопки полей тыкались по Enter
 
-        self.clear_button=QPushButton("❌", self.image_label)
+        self.clear_button = QPushButton("❌", self.image_label)
 
         self.setStyleSheet(styles.delete_image)
         self.clear_button.clicked.connect(self.clear_image)
         self.clear_button.setVisible(False)
-        self.image_label.resizeEvent = lambda event: self.clear_button.move(self.image_label.width() - 50, 8) #шикарную строчку нашёл, это чтобы крестик был прикреплён к картинке
+        # шикарную строчку нашёл, это чтобы крестик был прикреплён к картинке
+        self.image_label.resizeEvent = lambda event: self.clear_button.move(self.image_label.width() - 50, 8)
 
     def clear_image(self):
         self.image_label.setPixmap(QPixmap())  # Очищаем картинку
-        self.has_image = False  #Флаг, что картинки нет
+        self.has_image = False  # Флаг, что картинки нет
         self.clear_button.setVisible(False)  # Скрываем кнопку
 
     def load_image(self):
         text = self.input.text().strip()
         if not text.isdigit():
-            self.show_error("Чего вводишь? Код ошибки состоит из циферок O.O") #тут текст ошибок пишу
+            self.show_error("Чего вводишь? Код ошибки состоит из циферок O.O")  # тут текст ошибок пишу
             return
         code = int(text)
         if code not in api.SUPPORTED_CODES:
-            self.show_error(f"Кода ошибки {code} нет 😑") #такой кода ошибки не найден
+            self.show_error(f"Кода ошибки {code} нет 😑")  # такой кода ошибки не найден
             return
         self.button.setEnabled(False)
         self.button.setText("Загружаю...")
@@ -98,14 +106,14 @@ class PageOne(QWidget):
         self.button.setEnabled(True)
         self.has_image = True  # Ставлю флаг, что картинка есть
         self.button.setText("Загрузить картинку")
-    #сделаем обработчик ошибок, чтобы от ввода числа по типу 2000 ничего не ломалось
+
+    # сделаем обработчик ошибок, чтобы от ввода числа по типу 2000 ничего не ломалось
     def handle_error(self, error_message: str):
-            self.button.setEnabled(True)
-            self.button.setText("Загрузить картинку")
-            self.show_error(error_message)
+        self.button.setEnabled(True)
+        self.button.setText("Загрузить картинку")
+        self.show_error(error_message)
 
     def show_error(self, message: str):
-
         self.image_label.setText(message)
         self.has_image = False
         self.clear_button.setVisible(False)

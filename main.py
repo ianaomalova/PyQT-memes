@@ -6,6 +6,7 @@ from PyQt6.QtWidgets import QApplication, QWidget, QHBoxLayout
 from navbar import NavBar
 from content_page import PageOne
 
+
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -20,6 +21,7 @@ class MainWindow(QWidget):
 
         main_layout.addWidget(navbar)
         main_layout.addWidget(page)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

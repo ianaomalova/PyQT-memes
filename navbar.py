@@ -1,5 +1,6 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
+
 import styles
 
 
@@ -23,7 +24,7 @@ class NavBar(QWidget):
         text.setStyleSheet(styles.navbar_text)
         text.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        # 👇Менял стили, сначала всё сломалось, потом починил как-то вот так
+        # Менял стили, сначала всё сломалось, потом починил как-то вот так
         fixed_width = 120
         icon.setFixedWidth(fixed_width)
         text.setFixedWidth(fixed_width)
