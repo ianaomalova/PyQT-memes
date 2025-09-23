@@ -31,9 +31,10 @@ class PageOne(QWidget):
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
 
-        self.cleanButton = QPushButton("Отчистить")
+        self.cleanButton = QPushButton("Отчистить")        #кнопка отчистки
         self.cleanButton.setStyleSheet(styles.cleanButton)
         self.cleanButton.setEnabled(False)
+
 
 
         self.image_label = QLabel("")
@@ -47,6 +48,7 @@ class PageOne(QWidget):
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
+        self.cleanButton.clicked.connect(self.clearImage)
         self.button.clicked.connect(self.load_image)
 
     def load_image(self):
@@ -65,5 +67,7 @@ class PageOne(QWidget):
         self.cleanButton.setEnabled(True)
         self.button.setText("Загрузить картинку")
 
-    def clearImage(self):
-        pass
+    def clearImage(self):           #функционал кнопки отчистки
+        self.image_label.clear()
+        self.cleanButton.setEnabled(False)
+
