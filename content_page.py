@@ -1,5 +1,5 @@
-from PyQt6.QtCore import QThread, pyqtSignal
-from PyQt6.QtGui import QPixmap
+from PyQt6.QtCore import QThread, pyqtSignal, Qt
+from PyQt6.QtGui import QPixmap, QKeyEvent
 from PyQt6.QtWidgets import QWidget, QVBoxLayout,QHBoxLayout, QLabel, QPushButton, QLineEdit
 import requests
 import api
@@ -35,8 +35,6 @@ class PageOne(QWidget):
         self.cleanButton.setStyleSheet(styles.cleanButton)
         self.cleanButton.setEnabled(False)
 
-
-
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
@@ -50,6 +48,9 @@ class PageOne(QWidget):
 
         self.cleanButton.clicked.connect(self.clearImage)
         self.button.clicked.connect(self.load_image)
+
+        self.input.returnPressed.connect(self.load_image)
+
 
     def load_image(self):
         text = self.input.text().strip()
