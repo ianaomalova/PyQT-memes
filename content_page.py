@@ -1,5 +1,5 @@
-from PyQt6.QtCore import QThread, pyqtSignal, Qt
-from PyQt6.QtGui import QPixmap, QKeyEvent
+from PyQt6.QtCore import QThread, pyqtSignal
+from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QWidget, QVBoxLayout,QHBoxLayout, QLabel, QPushButton, QLineEdit
 import requests
 import api
@@ -31,7 +31,7 @@ class PageOne(QWidget):
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
 
-        self.cleanButton = QPushButton("Отчистить")        #кнопка отчистки
+        self.cleanButton = QPushButton("Отчистить")        #кнопка очистки
         self.cleanButton.setStyleSheet(styles.cleanButton)
         self.cleanButton.setEnabled(False)
 
@@ -68,7 +68,7 @@ class PageOne(QWidget):
         self.cleanButton.setEnabled(True)
         self.button.setText("Загрузить картинку")
 
-    def clearImage(self):           #функционал кнопки отчистки
+    def clearImage(self):           #функционал кнопки очистки
         self.image_label.clear()
         self.cleanButton.setEnabled(False)
 
