@@ -9,7 +9,7 @@ from content_page import PageOne
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Семинар")
+        self.setWindowTitle("семинар 2")
 
         main_layout = QHBoxLayout(self)
         main_layout.setSpacing(0)
@@ -26,6 +26,6 @@ if __name__ == "__main__":
     font = QFont("Arial", 12)
     app.setFont(font)
     window = MainWindow()
-    window.setFixedSize(800, 600)
+    window.setFixedSize(822, 600)
     window.show()
     sys.exit(app.exec())
