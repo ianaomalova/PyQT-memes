@@ -1,1 +1,1 @@
-CAT_URL = 'https://http.cat/'
+CAT_URL = 'https://http.dog/'

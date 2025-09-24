@@ -1,15 +1,16 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
-    border-right: 2px solid #1abc9c;
+    background:  #dbc0b4;
+    border-right: 2px solid #a0522d;
 }"""
 
 navbar_icon = """
     QLabel {
-        font-size: 48px;
+        font-size: 60px;
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-            stop:0 rgba(255, 255, 255, 0.1), stop:1 rgba(26, 188, 156, 0.1));
-        border: 2px solid rgba(26, 188, 156, 0.3);
+            stop:0 rgba(52, 28, 2, 0.1), 
+            stop:1 rgba(52, 28, 2, 0.1));
+        border: 2px solid #a0522d;
         border-radius: 25px;
         padding: 15px;
         margin: 10px 0;
@@ -21,20 +22,22 @@ navbar_icon = """
 
     QLabel:hover {
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-            stop:0 rgba(255, 255, 255, 0.2), stop:1 rgba(26, 188, 156, 0.2));
-        border: 2px solid rgba(26, 188, 156, 0.5);
+            stop:0 rgba(52, 28, 2, 0.2), 
+            stop:1 rgba(52, 28, 2, 0.2));
+        border: 2px solid #cd5b45;
     }
 """
 
 navbar_text = """
     QLabel {
-        color: #2c3e50;
-        font-size: 14px;
+        color: #ffffff;
+        font-size: 16px;
         font-weight: 600;
-        font-family: 'Segoe UI', Arial, sans-serif;
+        font-family: 'Segoe UI', Times New Roman, sans-serif;
         background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-            stop:0 rgba(255, 255, 255, 0.8), stop:1 rgba(255, 255, 255, 0.4));
-        border: 1px solid rgba(26, 188, 156, 0.2);
+            stop:0 rgba(52, 28, 2, 0.2), 
+            stop:1 rgba(52, 28, 2, 0.2));
+        border: 1px solid rgba(52, 28, 2, 0.2);
         border-radius: 12px;
         padding: 12px 8px;
         margin: 5px 0;
@@ -46,22 +49,24 @@ navbar_text = """
 
     QLabel:hover {
         background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-            stop:0 rgba(255, 255, 255, 0.9), stop:1 rgba(255, 255, 255, 0.6));
-        border: 1px solid rgba(26, 188, 156, 0.4);
-        color: #1abc9c;
+            stop:0 rgba(152, 118, 84, 0.8), 
+            stop:1 rgba(152, 118, 84, 0.6));
+        border: 1px solid rgba(52, 28, 2, 0.4);
+        color: #ffffff;
     }
 """
 
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
+                    stop:0 rgba(150, 75, 0, 0.8), 
+                    stop:1 rgba(101, 67, 33, 0.8));
                 color: white;
-                border: 2px solid #ffc107;
-                border-radius: 10px;
+                border: 2px solid #a0522d;
+                border-radius: 20px;
                 padding: 14px 20px;
                 text-align: center;
-                font-size: 14px;
+                font-size: 16px;
                 font-weight: 600;
                 min-height: 22px;
                 min-width: 100px;
@@ -69,14 +74,16 @@ load_buttons = """
 
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 1.0), stop:1 rgba(255, 152, 0, 1.0));
-                border: 2px solid #e0a800;
+                    stop:0 rgba(101, 50, 20, 0.9), 
+                    stop:1 rgba(50, 30, 10, 0.9));
+                border: 2px solid #5c3317;
             }
 
             QPushButton:pressed {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 152, 0, 0.9), stop:1 rgba(230, 126, 34, 0.9));
-                border: 2px solid #d68910;
+                    stop:0 rgba(80, 50, 20, 0.9), 
+                    stop:1 rgba(50, 30, 10, 0.9));
+                border: 2px solid #5c3317;
             }
 
             QPushButton:disabled {
@@ -89,7 +96,7 @@ load_buttons = """
 input_status = """
             #statusInput {
                 background: rgba(255, 255, 255, 0.9);
-                border: 2px solid rgba(52, 152, 219, 0.6);
+                border: 2px solid rgba(52, 28, 2, 0.6);
                 border-radius: 8px;
                 padding: 10px 12px;
                 font-size: 13px;
@@ -98,13 +105,13 @@ input_status = """
             }
 
             #statusInput:focus {
-                border: 2px solid #3498db;
+                border: 2px solid rgba(52, 28, 2, 0.8);
                 background: rgba(255, 255, 255, 1.0);
                 outline: none;
             }
 
             #statusInput:hover {
-                border: 2px solid rgba(52, 152, 219, 0.8);
+                border: 2px solid rgba(255, 215, 0, 0.8);
                 background: rgba(255, 255, 255, 0.95);
             }
 
@@ -119,3 +126,40 @@ input_status = """
                 font-style: italic;
             }
         """
+
+clear_button = """
+            QPushButton {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(255, 128, 128, 0.7), 
+                    stop:1 rgba(255, 128, 128, 0.7));
+                color: white;
+                border: 2px solid #f80000;
+                border-radius: 20px;
+                padding: 14px 20px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 600;
+                min-height: 22px;
+                min-width: 100px;
+            }
+
+            QPushButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(80, 200, 120, 0.8), 
+                    stop:1 rgba(80, 200, 120, 0.8));
+                border: 2px solid #228b22;
+            }
+
+            QPushButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(80, 50, 20, 0.9), 
+                    stop:1 rgba(50, 30, 10, 0.9));
+                border: 2px solid #5c3317;
+            }
+
+            QPushButton:disabled {
+                background: rgba(189, 195, 199, 0.6);
+                color: rgba(127, 140, 141, 0.8);
+                border: 2px solid rgba(189, 195, 199, 0.8);
+            }
+"""

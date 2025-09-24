@@ -14,7 +14,7 @@ class ImageLoader(QThread):
     finished = pyqtSignal(bytes)
 
     def run(self):
-        response = requests.get(api.CAT_URL + self.text)
+        response = requests.get(api.CAT_URL + self.text + '.jpeg')
         if response.status_code == 200:
             self.finished.emit(response.content)
 
@@ -28,16 +28,29 @@ class PageOne(QWidget):
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
+
+        self.clear_button = QPushButton("Очистить")
+        self.clear_button.hide()
+
+
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
         layout.addWidget(self.input)
         layout.addWidget(self.button)
         layout.addWidget(self.image_label)
+
+        layout.addWidget(self.clear_button)
+
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
+        self.clear_button.setStyleSheet(styles.clear_button)
+
         self.button.clicked.connect(self.load_image)
+
+        self.clear_button.clicked.connect(self.clear_image)
+
 
     def load_image(self):
         text = self.input.text().strip()
@@ -53,3 +66,9 @@ class PageOne(QWidget):
         self.image_label.setPixmap(pixmap)
         self.button.setEnabled(True)
         self.button.setText("Загрузить картинку")
+        self.clear_button.show()
+
+    # новая часть кода
+    def clear_image(self):
+        self.image_label.clear()
+        self.clear_button.hide()
