@@ -22,6 +22,7 @@ class MainWindow(QWidget):
         main_layout.addWidget(page)
 
 if __name__ == "__main__":
+
     app = QApplication(sys.argv)
     font = QFont("Arial", 12)
     app.setFont(font)
