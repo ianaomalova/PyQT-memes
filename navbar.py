@@ -15,9 +15,9 @@ class NavBar(QWidget):
         self.setObjectName("navWidget")
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
-        icon = QLabel('🐱')
+        icon = QLabel('🌳')
         icon.setStyleSheet(styles.navbar_icon)
-        text = QLabel("Мемные статусы")
+        text = QLabel("Природа")
         text.setStyleSheet(styles.navbar_text)
         layout.addWidget(icon)
         layout.addWidget(text)

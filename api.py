@@ -1,1 +1,1 @@
-CAT_URL = 'https://http.cat/'
+GARDEN_URL = ('https://http.garden/')
