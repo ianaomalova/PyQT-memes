@@ -28,16 +28,20 @@ class PageOne(QWidget):
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
+        self.clear_button = QPushButton("Очистить картинку")
+        self.clear_button.setStyleSheet(styles.load_buttons)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
         layout.addWidget(self.input)
         layout.addWidget(self.button)
+        layout.addWidget(self.clear_button)
         layout.addWidget(self.image_label)
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+        self.clear_button.clicked.connect(self.clear_image)
 
     def load_image(self):
         text = self.input.text().strip()
@@ -53,3 +57,6 @@ class PageOne(QWidget):
         self.image_label.setPixmap(pixmap)
         self.button.setEnabled(True)
         self.button.setText("Загрузить картинку")
+    
+    def clear_image(self):
+        self.image_label.clear()
