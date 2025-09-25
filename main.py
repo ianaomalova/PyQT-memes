@@ -9,7 +9,7 @@ from content_page import PageOne
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Семинар")
+        self.setWindowTitle("Константин Дробязкин")
 
         main_layout = QHBoxLayout(self)
         main_layout.setSpacing(0)

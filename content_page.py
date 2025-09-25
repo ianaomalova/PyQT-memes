@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QThread, pyqtSignal, Qt
 from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QPushButton, QLineEdit
 import requests
 import api
 import styles
@@ -24,38 +24,43 @@ class PageOne(QWidget):
         super().__init__()
 
         self.setObjectName("pageOne")
-
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
-        layout = QVBoxLayout(self)        
+        layout = QVBoxLayout(self)
+        self.buttonsLayout = QHBoxLayout()
 
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
+        self.buttonReset = QPushButton("Сброс")
+        self.buttonReset.setFixedWidth(40)
+        self.buttonReset.setStyleSheet(styles.load_buttons)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
+        self.buttonsLayout.addWidget(self.button)
+        self.buttonsLayout.addWidget(self.buttonReset)
+
         layout.addWidget(self.input)
-        layout.addWidget(self.button)
+        layout.addLayout(self.buttonsLayout)
         layout.addWidget(self.image_label)
 
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+        self.buttonReset.clicked.connect(self.reset_image)
+
 
         self.setLayout(layout)
         
-        self.updateTheme()
+        self.setStyleSheet(styles.scaffold_dark)
 
-
-    def updateTheme(self):
-        if theme.Themes.themeIsDark:
-            self.setStyleSheet(styles.scaffold_dark)
-        else:
-            self.setStyleSheet(styles.scaffold_light)
-
+    def reset_image(self):
+        self.input.clear()
+        self.button.setText("Загрузить картинку")
+        self.image_label.setPixmap(QPixmap())
 
     def load_image(self):
         text = self.input.text().strip()
