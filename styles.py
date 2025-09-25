@@ -1,7 +1,7 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
-    border-right: 2px solid #1abc9c;
+    background:  #556b2f;
+    border-right: 2px solid #6b8e23;
 }"""
 
 navbar_icon = """
@@ -28,7 +28,7 @@ navbar_icon = """
 
 navbar_text = """
     QLabel {
-        color: #2c3e50;
+        color: #8b4513;
         font-size: 14px;
         font-weight: 600;
         font-family: 'Segoe UI', Arial, sans-serif;
@@ -55,9 +55,9 @@ navbar_text = """
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
+                    stop:0 rgba(0, 100, 0, 0.9), stop:1 rgba(46, 139, 34, 0.9));
                 color: white;
-                border: 2px solid #ffc107;
+                border: 2px solid #006400;
                 border-radius: 10px;
                 padding: 14px 20px;
                 text-align: center;
