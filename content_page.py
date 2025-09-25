@@ -1,9 +1,10 @@
-from PyQt6.QtCore import QThread, pyqtSignal
+from PyQt6.QtCore import QThread, pyqtSignal, Qt
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
 import requests
 import api
 import styles
+import theme
 
 
 class ImageLoader(QThread):
@@ -22,8 +23,12 @@ class PageOne(QWidget):
     def __init__(self):
         super().__init__()
 
-        layout = QVBoxLayout(self)
-        
+        self.setObjectName("pageOne")
+
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+
+        layout = QVBoxLayout(self)        
+
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
@@ -34,10 +39,23 @@ class PageOne(QWidget):
         layout.addWidget(self.input)
         layout.addWidget(self.button)
         layout.addWidget(self.image_label)
+
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+
+        self.setLayout(layout)
+        
+        self.updateTheme()
+
+
+    def updateTheme(self):
+        if theme.Themes.themeIsDark:
+            self.setStyleSheet(styles.scaffold_dark)
+        else:
+            self.setStyleSheet(styles.scaffold_light)
+
 
     def load_image(self):
         text = self.input.text().strip()

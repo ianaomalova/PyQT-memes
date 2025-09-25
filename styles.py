@@ -1,8 +1,61 @@
-base_navbar = """
-#navWidget {
-    background:  #ADD8E6;
-    border-right: 2px solid #1abc9c;
+navbar_dark = """
+    #navWidget {
+        background:  qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 #1657A6, stop:1 #013A79);
+        border-right: 2px solid #1abc9c;
 }"""
+
+navbar_light = """
+    #navWidget {
+        background:  qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                    stop:0 #CDDBFF, stop:1 #5998F3);
+        border-right: 2px solid #1abc9c;
+}"""
+
+
+scaffold_dark = """
+    QWidget#pageOne {
+        background-color: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 #5596F2, stop:1 #1759A9);
+    }
+"""
+
+icon_style_dark = """ 
+    QLabel {
+        font-size: 48px;
+        background: qlineargradient(x1:1, y1:0, x2:0, y2:1,
+            stop:0 rgba(150, 187, 249, 255), stop:1 rgba(205, 219, 255, 255));
+        border: 2px solid rgba(255, 255, 255, 50);
+        border-radius: 25px;
+        padding: 15px;
+        margin: 10px 0;
+        min-height: 50px;
+        min-width: 50px;
+        text-align: center;
+        qproperty-alignment: AlignCenter;
+    }
+"""
+icon_style_light = """
+    QLabel {
+        font-size: 48px;
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                stop:0 #1657A6, stop:1 #013A79);
+        border: 2px solid rgba(26, 188, 156, 0.3);
+        border-radius: 25px;
+        padding: 15px;
+        margin: 10px 0;
+        min-height: 50px;
+        min-width: 50px;
+        text-align: center;
+        qproperty-alignment: AlignCenter;
+    }
+
+    QLabel:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 rgba(255, 255, 255, 0.2), stop:1 rgba(26, 188, 156, 0.2));
+        border: 2px solid rgba(26, 188, 156, 0.5);
+    }
+"""
 
 navbar_icon = """
     QLabel {
