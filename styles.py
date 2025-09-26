@@ -1,6 +1,6 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
+    background:  #ac05fa;
     border-right: 2px solid #1abc9c;
 }"""
 
@@ -55,9 +55,9 @@ navbar_text = """
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
+                    stop:0 rgba(148, 94, 173, 0.8), stop:1 rgba(64, 61, 204, 0.8));
                 color: white;
-                border: 2px solid #ffc107;
+                border: 2px solid #00d0ff;
                 border-radius: 10px;
                 padding: 14px 20px;
                 text-align: center;
@@ -82,7 +82,7 @@ load_buttons = """
             QPushButton:disabled {
                 background: rgba(189, 195, 199, 0.6);
                 color: rgba(127, 140, 141, 0.8);
-                border: 2px solid rgba(189, 195, 199, 0.8);
+                border: 2px solid rgba(0, 225, 255, 0.8);
             }
         """
 
@@ -119,3 +119,20 @@ input_status = """
                 font-style: italic;
             }
         """
+
+
+clear_button = """
+    QPushButton {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+            stop:0 rgba(220, 53, 69, 0.8), stop:1 rgba(201, 48, 63, 0.8));
+        color: white;
+
+    }
+
+    QPushButton:pressed {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+            stop:0 rgba(201, 48, 63, 0.9), stop:1 rgba(173, 41, 54, 0.9));
+        border: 2px solid #cc3a3a;
+    }
+
+"""

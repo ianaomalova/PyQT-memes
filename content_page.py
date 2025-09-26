@@ -17,7 +17,8 @@ class ImageLoader(QThread):
         response = requests.get(api.CAT_URL + self.text)
         if response.status_code == 200:
             self.finished.emit(response.content)
-
+        else:
+            self.finished.emit(b"")
 class PageOne(QWidget):
     def __init__(self):
         super().__init__()
@@ -28,16 +29,21 @@ class PageOne(QWidget):
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
+        self.clear_button = QPushButton("Очистить изображение")
+        self.clear_button.setStyleSheet(styles.clear_button)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
         layout.addWidget(self.input)
         layout.addWidget(self.button)
         layout.addWidget(self.image_label)
+        layout.addWidget(self.clear_button)
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+
+        self.clear_button.clicked.connect(self.clear_image)
 
     def load_image(self):
         text = self.input.text().strip()
@@ -48,8 +54,17 @@ class PageOne(QWidget):
         self.thread.start()
 
     def display_image(self, data: bytes):
-        pixmap = QPixmap()
-        pixmap.loadFromData(data)
-        self.image_label.setPixmap(pixmap)
         self.button.setEnabled(True)
         self.button.setText("Загрузить картинку")
+        if data:
+            pixmap = QPixmap()
+            pixmap.loadFromData(data)
+            self.image_label.setPixmap(pixmap)
+        else:
+            self.image_label.clear()
+            self.image_label.setText("Такой картинки нет")
+
+
+    def clear_image(self):
+        self.image_label.clear()
+        self.input.clear()
