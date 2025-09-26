@@ -23,7 +23,7 @@ class PageOne(QWidget):
         super().__init__()
 
         layout = QVBoxLayout(self)
-        
+
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
@@ -31,13 +31,19 @@ class PageOne(QWidget):
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
+        self.delete_button = QPushButton("Удалить картинку")
+        self.delete_button.setStyleSheet(styles.load_buttons)
+        self.delete_button.setEnabled(False)
+
         layout.addWidget(self.input)
         layout.addWidget(self.button)
         layout.addWidget(self.image_label)
+        layout.addWidget(self.delete_button)
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+        self.delete_button.clicked.connect(self.delete_image)
 
     def load_image(self):
         text = self.input.text().strip()
@@ -53,3 +59,8 @@ class PageOne(QWidget):
         self.image_label.setPixmap(pixmap)
         self.button.setEnabled(True)
         self.button.setText("Загрузить картинку")
+        self.delete_button.setEnabled(True)
+
+    def delete_image(self):
+        self.image_label.clear()
+        self.delete_button.setEnabled(False)

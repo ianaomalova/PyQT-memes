@@ -1,6 +1,6 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
+    background:  #8BC34A;
     border-right: 2px solid #1abc9c;
 }"""
 
@@ -54,16 +54,14 @@ navbar_text = """
 
 load_buttons = """
             QPushButton {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
-                color: white;
+                background: #FF0000;
                 border: 2px solid #ffc107;
                 border-radius: 10px;
                 padding: 14px 20px;
-                text-align: center;
+                text-align: left;
                 font-size: 14px;
                 font-weight: 600;
-                min-height: 22px;
+                min-height: 10px;
                 min-width: 100px;
             }
 
