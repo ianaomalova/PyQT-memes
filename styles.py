@@ -4,14 +4,15 @@ base_navbar = """
     border-right: 2px solid #1abc9c;
 }"""
 
+
 navbar_icon = """
     QLabel {
         font-size: 48px;
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-            stop:0 rgba(255, 255, 255, 0.1), stop:1 rgba(26, 188, 156, 0.1));
-        border: 2px solid rgba(26, 188, 156, 0.3);
-        border-radius: 25px;
-        padding: 15px;
+            stop:0 rgba(34, 153, 200, 1), stop:1 rgba(111, 23, 211, 0.1));
+        border: 3px solid rgba(50, 110, 220, 0.3);
+        border-radius: 40px;
+        padding: 13px;
         margin: 10px 0;
         min-height: 50px;
         min-width: 50px;
@@ -21,11 +22,43 @@ navbar_icon = """
 
     QLabel:hover {
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-            stop:0 rgba(255, 255, 255, 0.2), stop:1 rgba(26, 188, 156, 0.2));
-        border: 2px solid rgba(26, 188, 156, 0.5);
-    }
+            stop:0 rgba(111, 222, 111, 0.6), stop:1 rgba(123, 133, 210, 0.2));
+        border: 2px solid rgba(100, 188, 100, 0.5);
+    }3
 """
 
+knopka_clear = """
+            QPushButton {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(230, 5, 5, 1), stop:1 rgba(209, 5, 5, 0.9));
+                color: white;
+                border: 2px solid #e74c3c;
+                border-radius: 12px;
+                padding: 12px 16px;
+                font-size: 13px;
+                font-weight: 600;
+                min-height: 20px;
+                margin: 5px 10px;
+            }
+
+            QPushButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(230, 7, 6, 1.0), stop:1 rgba(200, 5, 4, 1.0));
+                border: 2px solid #c0392b;
+            }
+
+            QPushButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(192, 57, 43, 0.7), stop:1 rgba(155, 48, 39, 0.9));
+                border: 2px solid #a93226;
+            }
+
+            QPushButton:disabled {
+                background: rgba(130, 130, 130, 0.5);
+                color: grey;
+                border: 2px solid rgba(189, 195, 199, 0.8);
+            }
+"""
 navbar_text = """
     QLabel {
         color: #2c3e50;
