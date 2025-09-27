@@ -1,6 +1,7 @@
 from PyQt6.QtCore import QThread, pyqtSignal
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
+from PyQt6.QtCore import QTimer
 import requests
 import api
 import styles
@@ -18,31 +19,40 @@ class ImageLoader(QThread):
         if response.status_code == 200:
             self.finished.emit(response.content)
 
+
 class PageOne(QWidget):
     def __init__(self):
         super().__init__()
 
         layout = QVBoxLayout(self)
-        
+
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
-        self.button = QPushButton("Загрузить картинку")
-        self.button.setStyleSheet(styles.load_buttons)
+        self.input.setObjectName("statusInput")
+        self.input.setStyleSheet(styles.input_status)
+
+        self.load_button = QPushButton("Загрузить картинку")
+        self.load_button.setStyleSheet(styles.load_buttons)
+
+        self.clear_button = QPushButton("Удалить изображение")
+        self.clear_button.setStyleSheet(styles.clear_button)
+        self.clear_button.setEnabled(False)
+
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
         layout.addWidget(self.input)
-        layout.addWidget(self.button)
+        layout.addWidget(self.load_button)
+        layout.addWidget(self.clear_button)
         layout.addWidget(self.image_label)
-        self.input.setObjectName("statusInput")
-        self.input.setStyleSheet(styles.input_status)
 
-        self.button.clicked.connect(self.load_image)
+        self.load_button.clicked.connect(self.load_image)
+        self.clear_button.clicked.connect(self.clear_image)
 
     def load_image(self):
         text = self.input.text().strip()
-        self.button.setEnabled(False)
-        self.button.setText("Загружаю...")
+        self.load_button.setEnabled(False)
+        self.load_button.setText("Загружаю...")
         self.thread = ImageLoader(text)
         self.thread.finished.connect(self.display_image)
         self.thread.start()
@@ -51,5 +61,18 @@ class PageOne(QWidget):
         pixmap = QPixmap()
         pixmap.loadFromData(data)
         self.image_label.setPixmap(pixmap)
-        self.button.setEnabled(True)
-        self.button.setText("Загрузить картинку")
+        self.load_button.setEnabled(True)
+        self.load_button.setText("Загрузить картинку")
+        self.clear_button.setEnabled(True)
+
+    def clear_image(self):
+        pixmap = self.image_label.pixmap()
+        if pixmap and not pixmap.isNull():
+            self.image_label.clear()
+            self.clear_button.setText("Картинка удалена")
+            self.clear_button.setEnabled(False)
+            QTimer.singleShot(1500, lambda: self.clear_button.setText("Удалить изображение"))
+        else:
+            self.clear_button.setText("Картинка не загружена")
+            QTimer.singleShot(1500, lambda: self.clear_button.setText("Удалить изображение"))
+
