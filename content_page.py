@@ -18,26 +18,37 @@ class ImageLoader(QThread):
         if response.status_code == 200:
             self.finished.emit(response.content)
 
+
 class PageOne(QWidget):
     def __init__(self):
         super().__init__()
 
         layout = QVBoxLayout(self)
-        
+
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
+        self.clear_button = QPushButton("Очистить изображение")
+        self.clear_button.setStyleSheet(styles.clear_button)
         self.button.setStyleSheet(styles.load_buttons)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
 
         layout.addWidget(self.input)
         layout.addWidget(self.button)
+        layout.addWidget(self.clear_button)
         layout.addWidget(self.image_label)
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+        self.clear_button.clicked.connect(self.clear_image)
+
+        def clear_image(self):
+            if self.image_label.pixmap():
+                self.image_label.clear()
+                self.image_label.setText("Изображение удалено")
+                print("🖼️ Изображение очищено")
 
     def load_image(self):
         text = self.input.text().strip()
