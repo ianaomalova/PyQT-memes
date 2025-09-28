@@ -1,20 +1,20 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
+    background:  #ADC6E6;
     border-right: 2px solid #1abc9c;
 }"""
 
 navbar_icon = """
     QLabel {
-        font-size: 48px;
+        font-size: 52px;
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
             stop:0 rgba(255, 255, 255, 0.1), stop:1 rgba(26, 188, 156, 0.1));
-        border: 2px solid rgba(26, 188, 156, 0.3);
+        border: 2px solid rgba(30, 195, 156, 0.3);
         border-radius: 25px;
         padding: 15px;
         margin: 10px 0;
-        min-height: 50px;
-        min-width: 50px;
+        min-height: 70px;
+        min-width: 70px;
         text-align: center;
         qproperty-alignment: AlignCenter;
     }
@@ -29,7 +29,7 @@ navbar_icon = """
 navbar_text = """
     QLabel {
         color: #2c3e50;
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 600;
         font-family: 'Segoe UI', Arial, sans-serif;
         background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
@@ -55,7 +55,7 @@ navbar_text = """
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
+                    stop:0 rgba(250, 180, 7, 0.8), stop:1 rgba(256, 130, 0, 0.8));
                 color: white;
                 border: 2px solid #ffc107;
                 border-radius: 10px;
@@ -63,8 +63,8 @@ load_buttons = """
                 text-align: center;
                 font-size: 14px;
                 font-weight: 600;
-                min-height: 22px;
-                min-width: 100px;
+                min-height: 18px;
+                min-width: 80px;
             }
 
             QPushButton:hover {
