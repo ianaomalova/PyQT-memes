@@ -86,6 +86,39 @@ load_buttons = """
             }
         """
 
+clear_button = """
+            QPushButton {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 #e74c3c, stop:1 #c0392b);  
+                color: white;  
+                border: 2px solid #c0392b;  
+                border-radius: 10px;
+                padding: 14px 20px;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 600;
+                min-height: 22px;
+                min-width: 100px;
+            }
+
+            QPushButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 #c0392b, stop:1 #a93226); 
+                border: 2px solid #a93226;
+            }
+
+            QPushButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 #a93226, stop:1 #922b21);  
+                border: 2px solid #922b21;
+            }
+
+            QPushButton:disabled {
+                background: rgba(189, 195, 199, 0.6);
+                color: rgba(127, 140, 141, 0.8);
+                border: 2px solid rgba(189, 195, 199, 0.8);
+            }
+        """
 input_status = """
             #statusInput {
                 background: rgba(255, 255, 255, 0.9);
