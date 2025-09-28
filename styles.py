@@ -1,7 +1,7 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
-    border-right: 2px solid #1abc9c;
+    background:  #FFA07A;
+    border-right: 2px solid #FF6347;
 }"""
 
 navbar_icon = """
@@ -28,7 +28,7 @@ navbar_icon = """
 
 navbar_text = """
     QLabel {
-        color: #2c3e50;
+        color: #8B4513;
         font-size: 14px;
         font-weight: 600;
         font-family: 'Segoe UI', Arial, sans-serif;
