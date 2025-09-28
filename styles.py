@@ -1,7 +1,7 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
-    border-right: 2px solid #1abc9c;
+    background:  #808080;
+    border-right: 3px solid #FFFFFF;
 }"""
 
 navbar_icon = """
@@ -9,7 +9,7 @@ navbar_icon = """
         font-size: 48px;
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
             stop:0 rgba(255, 255, 255, 0.1), stop:1 rgba(26, 188, 156, 0.1));
-        border: 2px solid rgba(26, 188, 156, 0.3);
+        border: 2px solid #FFFFFF;
         border-radius: 25px;
         padding: 15px;
         margin: 10px 0;
@@ -20,17 +20,15 @@ navbar_icon = """
     }
 
     QLabel:hover {
-        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-            stop:0 rgba(255, 255, 255, 0.2), stop:1 rgba(26, 188, 156, 0.2));
-        border: 2px solid rgba(26, 188, 156, 0.5);
+        border: 2px solid #DC143C;
     }
 """
 
 navbar_text = """
     QLabel {
         color: #2c3e50;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 16px;
+        font-weight: 700;
         font-family: 'Segoe UI', Arial, sans-serif;
         background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
             stop:0 rgba(255, 255, 255, 0.8), stop:1 rgba(255, 255, 255, 0.4));
@@ -45,10 +43,8 @@ navbar_text = """
     }
 
     QLabel:hover {
-        background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-            stop:0 rgba(255, 255, 255, 0.9), stop:1 rgba(255, 255, 255, 0.6));
-        border: 1px solid rgba(26, 188, 156, 0.4);
-        color: #1abc9c;
+        border: 2px solid #DC143C;
+        color: #DC143C;
     }
 """
 
