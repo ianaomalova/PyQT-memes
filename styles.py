@@ -119,3 +119,38 @@ input_status = """
                 font-style: italic;
             }
         """
+
+clearButton = """
+            QPushButton {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(222, 34, 34, 0.6), stop:1 rgba(222, 34, 34, 0.6));
+                color: white;
+                border: 2px solid #ffc107;
+                border-radius: 10px;
+                padding: 12px 21px;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 600;
+                min-height: 21px;
+                min-width: 100px;
+            }
+
+            QPushButton:hover {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(214, 39, 39, 1.0), stop:1 rgba(214, 39, 39, 1.0));
+                border: 2px solid #e0a800;
+            }
+
+            QPushButton:pressed {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                    stop:0 rgba(186, 53, 53, 0.9), stop:1 rgba(186, 53, 53, 0.9));
+                border: 2px solid #d68910;
+            }
+
+            QPushButton:disabled {
+                background: rgba(189, 195, 199, 0.6);
+                color: rgba(127, 140, 141, 0.8);
+                border: 2px solid rgba(189, 195, 199, 0.8);
+            }
+
+"""

@@ -1,6 +1,6 @@
 from PyQt6.QtCore import QThread, pyqtSignal
 from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QLineEdit
+from PyQt6.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel, QPushButton, QLineEdit
 import requests
 import api
 import styles
@@ -23,21 +23,29 @@ class PageOne(QWidget):
         super().__init__()
 
         layout = QVBoxLayout(self)
-        
+        hlayout = QHBoxLayout(self)
+
         self.input = QLineEdit()
         self.input.setPlaceholderText("Введите статус ответа")
         self.button = QPushButton("Загрузить картинку")
         self.button.setStyleSheet(styles.load_buttons)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
+        self.clearButton = QPushButton("Очистить")
+        self.clearButton.setStyleSheet(styles.clearButton)
+        self.clearButton.setEnabled(False)
 
         layout.addWidget(self.input)
         layout.addWidget(self.button)
         layout.addWidget(self.image_label)
+        layout.addLayout(hlayout)
+        hlayout.addWidget(self.button)
+        hlayout.addWidget(self.clearButton)
         self.input.setObjectName("statusInput")
         self.input.setStyleSheet(styles.input_status)
 
         self.button.clicked.connect(self.load_image)
+        self.clearButton.clicked.connect(self.clearImage)
 
     def load_image(self):
         text = self.input.text().strip()
@@ -52,4 +60,9 @@ class PageOne(QWidget):
         pixmap.loadFromData(data)
         self.image_label.setPixmap(pixmap)
         self.button.setEnabled(True)
+        self.clearButton.setEnabled(True)
         self.button.setText("Загрузить картинку")
+
+    def clearImage(self):
+        self.image_label.clear()
+        self.clearButton.setEnabled(False)
