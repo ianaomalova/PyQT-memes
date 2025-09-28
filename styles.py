@@ -55,8 +55,8 @@ navbar_text = """
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
-                color: white;
+                    stop:0 #3498db, stop:1 #2980b9); 
+                color: pink;
                 border: 2px solid #ffc107;
                 border-radius: 10px;
                 padding: 14px 20px;
@@ -69,13 +69,13 @@ load_buttons = """
 
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 1.0), stop:1 rgba(255, 152, 0, 1.0));
+                    stop:0 #2980b9, stop:1 #21618c);
                 border: 2px solid #e0a800;
             }
 
             QPushButton:pressed {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 152, 0, 0.9), stop:1 rgba(230, 126, 34, 0.9));
+                    stop:0 #21618c, stop:1 #1b4f72);
                 border: 2px solid #d68910;
             }
 
