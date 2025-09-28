@@ -112,3 +112,27 @@ input_status = """
                 font-style: italic;
             }
         """
+
+clear_button = """
+    #clearButton {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+            stop:0 rgba(255, 20, 123, 0.8), stop:1 rgba(255, 154, 68, 0.8));
+        color: white;
+        border: 2px solid #ffc107;
+        border-radius: 25px;
+        padding: 12px 25px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        min-height: 22px;
+        min-width: 70px;
+    }
+
+    #clearButton:hover {
+        border: 2px solid #FFFFFF;
+    }
+
+    #clearButton:pressed {
+        border: 2px solid #FFFFFF;
+    }
+"""
