@@ -17,7 +17,7 @@ class NavBar(QWidget):
 
         icon = QLabel('🐈‍⬛')
         icon.setStyleSheet(styles.navbar_icon)
-        text = QLabel("мемные коты")
+        text = QLabel("коты")
         text.setStyleSheet(styles.navbar_text)
         layout.addWidget(icon)
         layout.addWidget(text)
