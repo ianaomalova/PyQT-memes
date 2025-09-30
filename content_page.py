@@ -5,9 +5,16 @@ import requests
 import api
 import styles
 
+codes = {
+    100, 101, 102,
+    200, 201, 202, 203, 204, 206, 207,
+    300, 301, 302, 303, 304, 305, 307, 308,
+    400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410,
+    411, 412, 413, 414, 415, 416, 417, 418, 420, 421, 422,
+    423, 424, 425, 426, 429, 431, 444, 450, 451, 497, 498, 499,
+    500, 501, 502, 503, 504, 506, 507, 508, 509, 510, 511, 521, 523, 525, 599}
 
 class ImageLoader(QThread):
-
     
     def __init__(self, base_url: str, code: str):
         super().__init__()
@@ -37,7 +44,6 @@ class PageOne(QWidget):
         self.cmdbutton.setStyleSheet(styles.cmdbuttons)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
-        
 
         layout.addWidget(self.input)
         layout.addWidget(self.button)
@@ -64,6 +70,21 @@ class PageOne(QWidget):
 
     def load_image(self):
         text = self.input.text().strip()
+
+        if not text:
+            self.image_label.setText("введите http-код")
+            return
+
+        if not text.isdigit():
+            self.image_label.setText("введите http-код")
+            return
+
+        code = int(text)
+
+        if code not in codes:
+            self.image_label.setText("введите http-код")
+            return
+
         self.button.setEnabled(False)
         self.button.setText("загружаю...")
         self.cmdbutton.setEnabled(False)
@@ -71,7 +92,6 @@ class PageOne(QWidget):
         self.thread = ImageLoader(self.current_api, text)
         self.thread.finished.connect(self.display_image)
         self.thread.start()
-        
 
     def display_image(self, data: bytes):
         pixmap = QPixmap()
@@ -81,5 +101,3 @@ class PageOne(QWidget):
         self.button.setText("загрузить картинку")
         self.cmdbutton.setEnabled(True)
         self.cmdbutton.setText("удалить картинку")
-
-
