@@ -15,11 +15,13 @@ class MainWindow(QWidget):
         main_layout.setSpacing(0)
         main_layout.setContentsMargins(0, 0, 0, 0)
 
-        navbar = NavBar()
-        page = PageOne()
+        self.navbar = NavBar()
+        self.page = PageOne()
 
-        main_layout.addWidget(navbar)
-        main_layout.addWidget(page)
+        self.navbar.category_selected.connect(self.page.set_api)
+
+        main_layout.addWidget(self.navbar)
+        main_layout.addWidget(self.page)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -7,20 +7,24 @@ import styles
 
 
 class ImageLoader(QThread):
-    def __init__(self, text: str):
+
+    
+    def __init__(self, base_url: str, code: str):
         super().__init__()
-        self.text = text
+        self.base_url = base_url
+        self.code = code
 
     finished = pyqtSignal(bytes)
 
     def run(self):
-        response = requests.get(api.CAT_URL + self.text)
+        response = requests.get(self.base_url + self.code + '.jpg')
         if response.status_code == 200:
             self.finished.emit(response.content)
 
 class PageOne(QWidget):
     def __init__(self):
         super().__init__()
+        self.current_api = api.CAT_URL
 
         layout = QVBoxLayout(self)
         
@@ -45,6 +49,15 @@ class PageOne(QWidget):
         self.button.clicked.connect(self.load_image)
         self.cmdbutton.clicked.connect(self.reload_image)
 
+    def set_api(self, category: str):
+        if category == "cat":
+            self.current_api = api.CAT_URL
+        elif category == "dog":
+            self.current_api = api.DOG_URL
+        elif category == "garden":
+            self.current_api = api.GARDEN_URL
+        self.reload_image()
+
     def reload_image(self):
         self.image_label.clear()
         self.cmdbutton.setEnabled(False)
@@ -55,7 +68,7 @@ class PageOne(QWidget):
         self.button.setText("загружаю...")
         self.cmdbutton.setEnabled(False)
         self.cmdbutton.setText("удалить картинку")
-        self.thread = ImageLoader(text)
+        self.thread = ImageLoader(self.current_api, text)
         self.thread.finished.connect(self.display_image)
         self.thread.start()
         
