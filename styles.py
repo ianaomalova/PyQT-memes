@@ -109,9 +109,9 @@ input_status = """
             }
 
             #statusInput:read-only {
-                background: rgba(236, 240, 241, 0.8);
-                color: rgba(127, 140, 141, 1.0);
-                border: 2px solid rgba(189, 195, 199, 0.6);
+                background: rgba(216, 240, 241, 0.8);
+                color: rgba(137, 140, 141, 1.0);
+                border: 2px solid rgba(199, 195, 199, 0.6);
             }
 
             #statusInput::placeholder {

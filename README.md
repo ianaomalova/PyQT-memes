@@ -17,4 +17,6 @@
 
 4. Запуск проекта:
 
-    - python run.py (или python3 run.py)
+    - python run.py (или python3 run.py)q
+
+Добавлена кннопка
