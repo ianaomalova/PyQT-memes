@@ -1,6 +1,6 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
+    background:  #00FFFF;
     border-right: 2px solid #1abc9c;
 }"""
 
@@ -28,7 +28,7 @@ navbar_icon = """
 
 navbar_text = """
     QLabel {
-        color: #2c3e50;
+        color: #000000;
         font-size: 14px;
         font-weight: 600;
         font-family: 'Segoe UI', Arial, sans-serif;
@@ -48,7 +48,7 @@ navbar_text = """
         background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
             stop:0 rgba(255, 255, 255, 0.9), stop:1 rgba(255, 255, 255, 0.6));
         border: 1px solid rgba(26, 188, 156, 0.4);
-        color: #1abc9c;
+        color: #000000;
     }
 """
 
@@ -58,11 +58,11 @@ load_buttons = """
                     stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
                 color: white;
                 border: 2px solid #ffc107;
-                border-radius: 10px;
+                border-radius: 25px;
                 padding: 14px 20px;
                 text-align: center;
-                font-size: 14px;
-                font-weight: 600;
+                font-size: 24px;
+                font-weight: 1000;
                 min-height: 22px;
                 min-width: 100px;
             }
