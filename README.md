@@ -3,6 +3,8 @@
 
 ### Установка
 
+Мовланов Р
+
 1. Клонирование репо: git clone https://github.com/ianaomalova/PyQT-memes.git
 
 2. Создание и активация виртуальной среды:
@@ -18,5 +20,3 @@
 4. Запуск проекта:
 
     - python run.py (или python3 run.py)
-
-мой бренч
