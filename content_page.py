@@ -30,7 +30,12 @@ class PageOne(QWidget):
         self.button.setStyleSheet(styles.load_buttons)
         self.image_label = QLabel("")
         self.image_label.setScaledContents(True)
+        #Кнопка "Очистить"
+        self.clear_button = QPushButton("Очистить")
+        self.clear_button.setStyleSheet(styles.load_buttons)
+        self.clear_button.clicked.connect(self.clear_image)
 
+        layout.addWidget(self.clear_button)
         layout.addWidget(self.input)
         layout.addWidget(self.button)
         layout.addWidget(self.image_label)
@@ -53,3 +58,7 @@ class PageOne(QWidget):
         self.image_label.setPixmap(pixmap)
         self.button.setEnabled(True)
         self.button.setText("Загрузить картинку")
+
+    def clear_image(self):
+        self.image_label.clear()
+        self.image_label.setText("")
