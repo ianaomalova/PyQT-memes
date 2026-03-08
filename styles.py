@@ -1,6 +1,6 @@
 base_navbar = """
 #navWidget {
-    background:  #ADD8E6;
+    background:  #ffb6c1;
     border-right: 2px solid #1abc9c;
 }"""
 
@@ -9,7 +9,7 @@ navbar_icon = """
         font-size: 48px;
         background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
             stop:0 rgba(255, 255, 255, 0.1), stop:1 rgba(26, 188, 156, 0.1));
-        border: 2px solid rgba(26, 188, 156, 0.3);
+        border: 2px solid #000000;
         border-radius: 25px;
         padding: 15px;
         margin: 10px 0;
@@ -55,7 +55,7 @@ navbar_text = """
 load_buttons = """
             QPushButton {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 0.8), stop:1 rgba(255, 152, 0, 0.8));
+                    stop:0 rgba(255, 154, 158, 0.9), stop:1 rgba(255, 152, 0, 0.8));
                 color: white;
                 border: 2px solid #ffc107;
                 border-radius: 10px;
@@ -69,7 +69,8 @@ load_buttons = """
 
             QPushButton:hover {
                 background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-                    stop:0 rgba(255, 193, 7, 1.0), stop:1 rgba(255, 152, 0, 1.0));
+                    stop:0 rgba(255, 154, 158, 0.3), stop:1 rgba(255, 152, 0, 0.3));
+                color: #000000;
                 border: 2px solid #e0a800;
             }
 
@@ -118,4 +119,33 @@ input_status = """
                 color: rgba(149, 165, 166, 0.8);
                 font-style: italic;
             }
+        """
+clear_button = """
+    QPushButton {
+                    background: rgba(0, 0, 0, 0.7);
+                    color: white;
+                    border: 2px solid #ff0000;
+                    border-radius: 15px;
+                    padding: 14px 20px;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 600;
+                    min-height: 22px;
+                    min-width: 100px;
+                    margin-top: 10px;
+                }
+
+    QPushButton:pressed {
+                    background: rgba(0, 0, 0, 0.3);
+                    color: white;
+                    border: 2px solid #ff0000;
+                    border-radius: 15px;
+                    padding: 14px 20px;
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 600;
+                    min-height: 22px;
+                    min-width: 100px;
+                    margin-top: 10px;
+                }
         """
